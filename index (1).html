@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rivo — Custom Printed Store</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">RIVO<span>.</span></div>
+  <nav><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#about">About</a></nav>
+  <button class="cart-btn" onclick="openCart()">Cart <b id="cartCount">0</b></button>
+</header>
+
+<section class="hero">
+  <div>
+    <p class="eyebrow">PRINT IT. WEAR IT. LOVE IT.</p>
+    <h1>Your ideas,<br><span>printed your way.</span></h1>
+    <p class="hero-copy">Custom printed clothes, caps, mugs and more — made for you.</p>
+    <a class="primary" href="#shop">Shop now →</a>
+  </div>
+  <div class="hero-card"><div class="shirt">RIVO</div><div class="stamp">CUSTOM<br>PRINTS</div></div>
+</section>
+
+<section id="categories" class="categories">
+<h2>Shop by category</h2>
+<div class="cat-grid">
+  <button onclick="filterProducts('All')">✨ All Items</button>
+  <button onclick="filterProducts('Clothes')">👕 Clothes</button>
+  <button onclick="filterProducts('Caps')">🧢 Caps</button>
+  <button onclick="filterProducts('Mugs')">☕ Mugs</button>
+  <button onclick="filterProducts('More')">👜 More</button>
+</div>
+</section>
+
+<section id="shop" class="shop">
+<div class="section-head">
+  <div><p class="eyebrow">RIVO COLLECTION</p><h2>Popular picks</h2></div>
+  <div class="shop-controls">
+    <input type="text" id="searchInput" placeholder="Search products..." oninput="handleSearch()">
+    <select id="sortSelect" onchange="handleSort()">
+      <option value="default">Sort by</option>
+      <option value="low-high">Price: Low to High</option>
+      <option value="high-low">Price: High to Low</option>
+      <option value="name">Name</option>
+    </select>
+  </div>
+</div>
+<div id="products" class="product-grid"></div>
+</section>
+
+<section id="about" class="about">
+<h2>Made for your style.</h2><p>Rivo brings custom printing to everyday products. Choose a product, add your design idea, and make it yours.</p>
+</section>
+
+<footer>© 2026 Rivo. Custom printed products.</footer>
+
+<!-- Cart Drawer -->
+<div id="cart" class="drawer">
+<div class="drawer-top"><h2>Your cart</h2><button onclick="closeCart()">×</button></div>
+<div id="cartItems"></div>
+<div class="total"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+<button class="primary checkout" onclick="openCheckoutModal()">Proceed to checkout</button>
+</div>
+<div id="shade" class="shade" onclick="closeCart()"></div>
+
+<!-- Checkout Modal Form -->
+<div id="checkoutModal" class="shade" style="display:none; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:30px; border-radius:8px; width:100%; max-width:400px; position:relative;">
+    <h2>Checkout Details</h2>
+    <form id="orderForm" onsubmit="completeOrder(event)">
+      <label style="display:block; margin:10px 0 5px;">Full Name</label>
+      <input type="text" id="custName" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+      <label style="display:block; margin:10px 0 5px;">Delivery Address</label>
+      <textarea id="custAddress" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;"></textarea>
+      <button type="submit" class="primary" style="width:100%; margin-top:15px;">Place Order</button>
+      <button type="button" onclick="closeCheckoutModal()" style="width:100%; margin-top:5px; background:none; border:0; cursor:pointer; padding:8px;">Cancel</button>
+    </form>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" style="position:fixed; bottom:20px; left:50%; transform:translateX(-50%) translateY(100px); background:#151515; color:#fff; padding:12px 24px; border-radius:30px; transition:0.3s; z-index:100; font-weight:600;">Added to cart!</div>
+
+<script src="script.js"></script>
+</body>
+</html>
